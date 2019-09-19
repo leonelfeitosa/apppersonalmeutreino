@@ -1,0 +1,89 @@
+a {
+}
+
+a i {
+   font-size: 20px; 
+}
+
+.maiusculo{
+    text-transform: uppercase;
+}
+
+.treino {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.treino i {
+    size: 50px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.treino a {
+    display: inline;
+    font-weight: bold;
+}
+
+.descricao {
+    text-align: justify;
+}
+
+.tamanhoicones{
+    font-size: 40px;
+    text-align: ri;
+
+}
+
+.tam{
+    max-width: 300px;
+    overflow: auto;
+    text-overflow: clip;
+    white-space: nowrap;
+    transition: all ease 0.7s;
+}
+
+#margem {
+    margin-left: 15px;
+}
+
+.corletra{
+    color: black;
+  
+}
+
+.tamanhosubitens{
+    font-size: 20px;
+    text-align: right;
+}
+
+.distancia{
+    margin-right: 15px;
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.margimicon{
+    margin-left: -25px;
+}
+
+.colcol {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    text-align: center;
+}
+
+.alinhamentodireita{
+    float: right;
+}
+
+
+.treino[_ngcontent-c2] i[_ngcontent-c2] {
+    size: 50px;
+    font-weight: bold;
+    margin-right: 0;
+}

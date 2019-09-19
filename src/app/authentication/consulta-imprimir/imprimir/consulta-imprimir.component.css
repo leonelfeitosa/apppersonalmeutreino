@@ -1,0 +1,82 @@
+a {
+    color: #fff;
+}
+
+a i {
+   font-size: 25px;
+   font-weight: bold; 
+}
+
+td {
+    text-align: justify;
+}
+
+.margemtabela{
+    margin-left: 30px;
+    right: 30px;
+}
+
+.texto{
+    text-align: justify;
+}
+
+.tituloconsulta{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-weight: bold; 
+}
+
+.titulocorpo{
+    font-size: 16px;
+    text-align: left;
+    margin-top: 15px;
+    text-transform: capitalize;
+    font-weight: bold; 
+    margin-left: 90px;
+    margin-block-end: 0px;
+}
+
+.titulocorpocentro{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+    text-transform: capitalize;
+    font-weight: bold;    
+    margin-block-end: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.corpohistoricoeevolucao{
+    font-size: 15px;
+    text-align: justify;
+    margin-top: 15px;    
+    margin-block-end: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.top{
+    margin-top: 30px;    
+
+}
+
+.conteudocorpo{
+    font-size: 14px;
+    text-align: left;
+    text-transform: capitalize;    
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.center{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.maiusculo{
+    text-transform: uppercase;
+
+}

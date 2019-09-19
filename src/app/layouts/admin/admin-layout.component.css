@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+
+aside.pcoded-slider.ng-sidebar {
+    top: 56px;
+}
+
+.slimscroll-wrapper, .scroll-window {
+    width: 100% !important;
+}
+
+.userlist-box.show {
+    display: -webkit-box;
+}
+
+.userlist-box.hide {
+    display: none;
+}
+
+.footer {
+    text-align: left;
+}
+
+h6 {
+    color: #fff;
+    font-weight: bold;
+}
+
+a:link, a:visited, a:active {
+	text-decoration: none;
+	}
+a:hover {
+    text-decoration: underline;  
+	color:#000; 
+    font-size:103%; 
+    text-decoration:none;
+    }
+    
+.tamanho{
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    
+}
+
+.tamanhoitalico{
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    font-style: italic;
+    text-align: left;    
+}
+
+a:hover h1{
+    text-decoration: underline;
+}
+
+.meutreino{
+   
+    font-weight: bolder;
+    font-style: italic;
+    text-transform: capitalize;
+    text-align: right;
+}
+
+.main-body .page-wrapper {
+    padding: 0.5px !important;
+    transition: all ease-in 0.3s;
+}
+
+.itens{
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+
+/*pcoded-item*/

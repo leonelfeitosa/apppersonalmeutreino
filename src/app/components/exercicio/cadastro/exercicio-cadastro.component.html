@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-12">
+    <!-- Basic Form Inputs card start -->
+    <app-card [title]="'Cadastro de Exercício'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <br>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div *ngIf="mensagem" class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagem}}</strong>
+      </div>
+      <div class="espacamento">
+        <form #form="ngForm" class="form-horizontal">
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="negrito"><strong>Nome do Exercício</strong></label>
+              <input required type="text" name="nomeExercicio" [(ngModel)]="exercicio.nomeExercicio" class="form-control"
+                placeholder="Nome do Exercício">
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="negrito"><strong>Link Vídeo</strong></label>
+              <input required type="text" name="linkVideoExercicio" [(ngModel)]="exercicio.linkVideoExercicio" class="form-control"
+                placeholder="Link do Vídeo do Exercicio">
+            </div>
+          </div>
+          <br><br>
+          <button type="submit" *ngIf="!editando" [disabled]="form.form.invalid"
+            (click)="cadastrar()" class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Salvar</button>
+          <button type="submit" *ngIf="editando" [disabled]="form.form.invalid" (click)="editar()"
+            class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Atualizar</button>
+
+        </form>
+      </div>
+
+    </app-card>
+    <!-- Input Alignment card end -->
+  </div>
+</div>

@@ -1,0 +1,54 @@
+a {
+    color:black;
+}
+
+a i {
+   font-size: 20px; 
+}
+
+.maiusculo{
+    text-transform: uppercase;
+}
+
+.treino {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.treino i {
+    size: 50px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.treino a {
+    display: inline;
+    font-weight: bold;
+}
+
+.descricao {
+    text-align: justify;
+}
+
+.tam{
+    max-width: 300px;
+    overflow: auto;
+    text-overflow: clip;
+    white-space: nowrap;
+    transition: all ease 0.7s;
+}
+
+#margem {
+    margin-left: 15px;
+}
+
+.corletra{
+    color: black;
+  
+}
+
+
+.alinhamentodireita{
+    float: right;
+}
+

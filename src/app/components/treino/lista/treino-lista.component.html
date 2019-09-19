@@ -1,0 +1,231 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Treino'" [classHeader]="true" [blockClass]="'table-border-style'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemSucesso}}</strong>
+      </div>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <br>
+      <div *ngIf="!verifica">
+        <div *ngIf="mensagem" class="alert alert-warning" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>{{mensagem}}</strong>
+        </div>
+        <a routerLink="/treino/cadastro/{{ aluno_id }}"><i class="fa fa-calendar-plus-o fa-lg"></i>Cadastrar Treino</a>
+      </div>
+      <div>
+        <div *ngIf="verifica" class="col-sm-12 treino">
+
+          <br>
+
+          <div class="row d-flex justify-content-center distancia">
+            
+                <p class="paragrafo" [innerHTML]="treino.descricao"></p>
+
+            
+          </div>
+          <br>
+          <div class="row tamanhoicones">
+            <div class="col colcol">
+                <span routerLink="/treino/cadastro/{{ aluno_id }}"> <i class="fa fa-calendar-plus-o fa-lg"></i></span>
+
+            </div>
+            <div class="col colcol">
+                <span routerLink="/treino/atualizardescricao/{{ treino._id }}">
+                  <i class="fa fa-pencil"></i></span>
+
+            </div>
+            <div class="col colcol">
+
+                <span routerLink="/treino/add/{{ treino._id }}"> <i
+                  class="fa fa-plus-circle"></i></span>
+
+            </div>
+          </div>
+          <br>
+
+         
+          <div class="row">
+              <!--
+              <button id="" class="btn btn-warning corletra" routerLink="#" (click)="buscaMsg()" data-toggle="modal" data-target="#exampleModalMsg">
+                Cadastrar Mensagem <i class="fa fa-comment"></i>
+              </button>
+              -->
+            <div class="col-md-3">
+              <button class="btn btn-danger alinhamentodireita" routerLink="#" data-toggle="modal"
+                data-target="#exampleModal">Finalizar treino <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+
+          
+        </div>
+        <div *ngIf="verifica" class="table-responsive">
+            <div *ngFor="let treino of treinosItens">
+
+          <div class="row">
+            <div class="col distancia">
+                <p class="maiusculo" [innerHTML]="treino.nome"></p>
+            </div>
+            
+           
+          
+            <div class="col tamanhosubitens margimicon">
+                <a class="distancia" routerLink="#" data-toggle="modal" (click)="listaExerciciosTreino(treino._id)" data-target="#exampleModalExerc"> <i class="fa fa-list"></i> </a>
+                <a class="distancia" routerLink="/treino/atualizartreino/{{ treino._id }}/{{ treino.treino_id }}"><i class="cor fa fa-pencil fa-2x"></i></a>
+                <a class="distancia" routerLink="#" (click)="pegaId(treino._id)" data-toggle="modal" data-target="#exampleModalT"><i class="cor ti-trash"></i></a>
+            </div>     
+          </div>
+                
+               
+                
+              </div>
+        </div>
+      </div>
+    </app-card>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Finalizar Treino</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja finalizar o treino?
+          </div>
+          <div class="row margemdireita espaco">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-secondary corletra" data-dismiss="modal">Cancelar</button>
+              <button type="button" (click)="deletar(treino.aluno_id)" data-dismiss="modal"
+                class="btn btn-danger">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deletar Treino</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja deletar o treino?
+          </div>
+          <div class="row margemdireita">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-primary corred" data-dismiss="modal">Cancelar</button>
+              <button type="button" (click)="deletarTreino(id_item)" data-dismiss="modal"
+                class="btn btn-primary">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalMsg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Inserir Mensagem</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="espacamento">
+            <h5>Mensagem atual: {{aluno.msg}}</h5><br>
+            <form #form="ngForm" class="form-horizontal">
+              <div class="row form-group">
+                <div class="col-md-12">
+
+                  <label class="negrito">Nova Mensagem</label>
+                  <textarea type="text" name="msg" [(ngModel)]="msg" class="form-control"
+                    placeholder="Mensagem"></textarea>
+
+                </div>
+              </div>
+              <div class="margemdireita">
+                <button type="submit" [disabled]="form.form.invalid" (click)="atualizaMsg()" data-dismiss="modal"
+                  class="btn btn-success"><i class="fa fa-floppy-o"></i> Salvar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalExerc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Exercícios do Treino</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="mensagemExercicio" class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{ mensagemExercicio }}</strong>
+          </div>
+        </div>
+        <div class="row margemdireita">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="text-center">Exercício</th>
+                    <th class="text-center">Ordena</th>
+                    <th class="text-center">Deletar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let e of exerciciosTreino; let i = index">
+                    <td class="text-center">{{ e.nomeExercicio }}</td>
+                    <td class="text-center"><a routerLink="#" (click)="ordenaExerciciosMais(i)">
+                        <i class="fa fa-arrow-down"></i>
+                      </a>
+                      <a routerLink="#" (click)="ordenaExerciciosMenos(i)">
+                        <i class="fa fa-arrow-up"></i>
+                      </a></td>
+                    <td class="text-center"><a routerLink="#" (click)="deletarExercicioTreino(e._id, e.item_treino_id)">
+                        <i class="cor ti-trash"></i>
+                      </a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="margemdireita">
+                <button type="submit" (click)="salvaOrdenacaoExercicio()" data-dismiss="modal"
+                  class="btn btn-success"><i class="fa fa-floppy-o"></i> Salvar Ordenação</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

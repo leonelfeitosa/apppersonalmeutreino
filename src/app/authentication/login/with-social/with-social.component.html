@@ -1,0 +1,51 @@
+
+
+
+<section class="login p-fixed text-center bg-primary">
+  <!-- starts -->
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Authentication card start -->
+        <div class="">
+          <form #form="ngForm" class="md-float-material">
+            <div class="text-center">
+                <i class="fas fa-dumbbell iconlogo"></i>
+              <h1 class="font">Meu Treino</h1>
+              <li style="list-style-type: none;"><hr style="height:2px; border:none; color:rgb(255, 255, 255); background-color:rgb(255, 255, 255); margin-top: 0px; margin-bottom: 0px;"/></li>
+
+              
+              <br>
+              <p class="font">Aplicativo para prescrição</p>
+
+            </div> 
+            <div class="auth-box bloxlogin">              
+                <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+                  <strong>{{mensagemErro}}</strong>
+              </div>
+             
+              <div class="col-sm-12"> 
+                <div class="input-group">
+                  <input required type="text" name="cpf" [(ngModel)]="login.cpf" class="form-control" placeholder="CPF">
+                  <span class="md-line"></span>
+                </div>
+                <div class="input-group">
+                  <input required type="password" name="senha" [(ngModel)]="login.senha" class="form-control" placeholder="Senha">
+                  <span class="md-line"></span>
+                </div>
+                
+                <div class="row m-t-30">
+                  <div class="col-md-12">
+                    <button type="submit" [disabled]="form.form.invalid" (click)="educador()" (click)="logar()" class="btn btn-success btn-md btn-block waves-effect text-center m-b-20">Entrar <i class="fa fa-unlock"></i></button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>#label {color: #000;} .tamanhologin {width: 100px;}</style>

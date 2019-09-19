@@ -1,0 +1,17 @@
+
+a i {
+   font-size: 20px; 
+}
+
+.espacodiv{
+    margin-right: 15px !important;
+    margin-top: -15px;
+    text-align: right !important;
+}
+
+
+.maiusculo{
+    text-transform: uppercase;
+    margin-left: 15px !important;
+    font-weight: 600 !important;
+}

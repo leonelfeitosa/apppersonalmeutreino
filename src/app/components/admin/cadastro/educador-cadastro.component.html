@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-sm-12">
+    <!-- Basic Form Inputs card start -->
+    <app-card [title]="'Cadastro do Educador Físico'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <br>
+      <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemSucesso}}</strong>
+      </div>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div class="espacamento">
+        <form #form="ngForm" class="form-horizontal">
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="negrito"> Nome</label>
+              <input required type="text" name="nome" [(ngModel)]="educador.nome" class="form-control" placeholder="Nome">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="negrito"> Telefone</label>
+              <input required type="phone" name="telefone" [(ngModel)]="educador.telefone" class="form-control" placeholder="Telefone">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="negrito"> CPF: </label>
+              <input required type="text" name="cpf" [textMask]="{mask: mask}" [(ngModel)]="educador.cpf" class="form-control"
+                placeholder="CPF">
+            </div>
+          </div>
+          <div *ngIf="editando">
+            <button type="submit" *ngIf="editando && !alteraSenha" (click)="alterarSenha()" class="btn btn-success pull-left">
+              Alterar Senha</button>
+            <div *ngIf="alteraSenha">
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="negrito"> Senha: </label>
+                  <input required type="password" name="senha" [(ngModel)]="educador.senha" class="form-control"
+                    placeholder="Senha">
+                </div>
+                <div class="col-md-2">
+                  <label class="negrito">Confirmar senha: </label>
+                  <input required type="password" name="confirmarsenha" [(ngModel)]="confirmarSenha" class="form-control"
+                    placeholder="Confirmar Senha">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" *ngIf="!editando" [disabled]="form.form.invalid" (click)="cadastro()" class="btn btn-success pull-right"><i
+            class="fa fa-floppy-o"></i> Salvar</button>
+          <button type="submit" *ngIf="editando" [disabled]="form.form.invalid" (click)="editar()" class="btn btn-success pull-right"><i
+              class="fa fa-floppy-o"></i> Atualizar</button>
+        </form>
+      </div>
+      <br>
+    </app-card>
+    <!-- Input Alignment card end -->
+  </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="row">
+  <div class="col-sm-12">
+    <!-- Basic Form Inputs card start -->
+    <app-card [title]="'Cadastro/Atualização de Evolução'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <br>
+      <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemSucesso}}</strong>
+      </div>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div class="espacamento">
+        <form #form="ngForm" class="form-horizontal">
+          <div class="row form-group">
+            <div class="col-md-12">
+
+              <label class="negrito"> Peso:</label>
+              <input required type="number" name="peso" min="0" [(ngModel)]="evolucao.peso" class="form-control"
+                placeholder="Peso Atual">
+
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+
+              <label class="negrito"> Tórax:</label>
+              <input required type="text" name="torax" [(ngModel)]="evolucao.torax" class="form-control"
+                placeholder="Tórax">
+
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+
+              <label class="negrito"> Circunferência Abdominal: </label>
+              <input required type="number" name="cintura" min="0" [(ngModel)]="evolucao.cintura" class="form-control"
+                placeholder="Cintura Quadril">
+
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+
+              <label class="negrito"> Abdômen:</label>
+              <input required type="text" name="abdomem" [(ngModel)]="evolucao.abdomem" class="form-control"
+                placeholder="Abdomem">
+
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+
+              <label class="negrito"> Quadril:</label>
+              <input required type="text" name="quadril" [(ngModel)]="evolucao.quadril" class="form-control"
+                placeholder="Quadril">
+
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-6">
+
+              <label class="negrito"> Coxa Direita:</label>
+              <input required type="text" name="coxaD" [(ngModel)]="evolucao.coxaD" class="form-control"
+                placeholder="Coxa Direita">
+
+            </div>
+
+            <div class="col-md-6">
+
+              <label class="negrito"> Coxa Esquerda:</label>
+              <input required type="text" name="coxaE" [(ngModel)]="evolucao.coxaE" class="form-control"
+                placeholder="Coxa Esquerda">
+
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-6">
+
+              <label class="negrito"> Perna Direita:</label>
+              <input required type="text" name="pernaD" [(ngModel)]="evolucao.pernaD" class="form-control"
+                placeholder="Perna Direita">
+
+            </div>
+
+            <div class="col-md-6">
+
+              <label class="negrito"> Perna Esquerda:</label>
+              <input required type="text" name="pernaE" [(ngModel)]="evolucao.pernaE" class="form-control"
+                placeholder="Perna Esquerda">
+
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-6">
+
+              <label class="negrito"> Braço Direito:</label>
+              <input required type="text" name="bracoD" [(ngModel)]="evolucao.bracoD" class="form-control"
+                placeholder="Braço Direito">
+
+            </div>
+
+            <div class="col-md-6">
+
+              <label class="negrito"> Braço Esquerdo:</label>
+              <input required type="text" name="bracoE" [(ngModel)]="evolucao.bracoE" class="form-control"
+                placeholder="Braço Esquerdo">
+
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-6">
+
+              <label class="negrito"> AnteBraço Direito:</label>
+              <input required type="text" name="antebracoD" [(ngModel)]="evolucao.antebracoD" class="form-control"
+                placeholder="AnteBraço Direito">
+
+            </div>
+            <div class="col-md-6">
+
+              <label class="negrito"> AnteBraço Esquerdo:</label>
+              <input required type="text" name="antebracoE" [(ngModel)]="evolucao.antebracoE" class="form-control"
+                placeholder="AnteBraço Esquerdo">
+
+            </div>
+          </div>
+          <!--
+          <div class="row form-group">
+            <div class="col-md-12">
+
+              <label class="negrito"> Índice de Massa Corporal - IMC:</label>
+              <input type="number" name="IMC" min="1" [(ngModel)]="evolucao.IMC" class="form-control" placeholder="IMC">
+
+            </div>
+          </div>
+        -->
+          <div class="row form-group">
+            <div class="col-md-12">
+
+              <label class="negrito"> Data da avaliação:</label>
+              <input required type="date" name="dataAvaliacao" [(ngModel)]="evolucao.dataAvaliacao" class="form-control"
+                placeholder="Data da avaliação">
+
+            </div>
+          </div>
+
+          <button type="submit" *ngIf="!editando" [disabled]="form.form.invalid" (click)="cadastrar()" class="btn btn-success pull-right"><i
+              class="fa fa-floppy-o"></i> Salvar</button>
+          <button type="submit" *ngIf="editando" [disabled]="form.form.invalid" (click)="editar()" class="btn btn-success pull-right"><i
+              class="fa fa-floppy-o"></i> Atualizar</button>
+        </form>
+      </div>
+      <br>
+    </app-card>
+    <!-- Input Alignment card end -->
+  </div>
+</div>

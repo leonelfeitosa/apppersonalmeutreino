@@ -1,0 +1,70 @@
+<section class="text-center">
+  <!-- starts -->
+  <div class="auth-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Authentication card start -->
+        <div class="login-card card-body auth-body">
+
+          <div class="card-body" id="imprimir">
+            <div class="row">
+              <div class="col-md-12">
+                  <img class="img-fluid tamanhologin text-center" src="assets/images/logo1.png"/> 
+              </div>
+             
+              <div class="col-md-12">
+                <p class="tituloconsulta">{{ consulta.titulo }}</p>
+              </div>
+            </div>
+            <div class="container">
+            <table class="table">
+              <thead>
+                <tr scope="row">
+                  <th scope="col">Paciente</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Hora</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr scope="row">
+                  <td class="maiusculo" scope="col">{{consulta.nome}}</td>
+                  <td scope="col">{{consulta.data}}</td>
+                  <td scope="col">{{consulta.hora}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="titulocorpocentro">Historico </p>
+                  <p class="texto img-fluid corpohistoricoeevolucao">
+                    <a class="" style="white-space: initial" [innerHTML]="consulta.historico"></a>
+                  </p>
+                </div>
+              </div>
+              <div class="row top" *ngIf="!verificaId">
+                <div class="col-md-12">
+                  <p class="titulocorpocentro">Evolução</p>
+                  <p class="texto img-fluid corpohistoricoeevolucao">
+                    <a class="" style="white-space: initial" [innerHTML]="consulta.evolucao"></a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-6 center">
+                  <p>_______________________________________________</p>
+                  (Nome Profissional Responsável)/(Registro de Conselho)
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

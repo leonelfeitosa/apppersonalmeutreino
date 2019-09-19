@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Alunos'" [classHeader]="true" [blockClass]="'table-border-style'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemSucesso}}</strong>
+      </div>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div class="col-md-6">                                
+          <input [(ngModel)]="pesquisa" name="pesquisa" class="form-control" placeholder="Pesquisar por Nome">
+       </div>
+      <div class="table-responsive">
+          <table class="table table-hover">
+           
+            <tbody>
+            <div *ngFor="let aluno of alunos|searchp:'nome':pesquisa">
+
+                <div class="row">
+                    <div class="col-12">
+                        <p class="maiusculo nomealuno">{{ aluno.nome }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex centralizarrow">
+                    <div class="col">
+                        <a routerLink="/treino/lista/{{ aluno._id }}"><i class="fa fa-table fa-lg"></i></a>
+                    </div>
+                    <div class="col">
+                        <a routerLink="/evolucao/cadastro/{{ aluno._id }}"><i class="fa fa-plus-circle fa-lg"></i></a>
+                    </div>
+                    <div class="col">               
+                       <a routerLink="/evolucao/lista/{{ aluno._id }}"><i class="fa fa-list"></i></a>
+                    </div>
+                    <div class="col"><a routerLink="/aluno/atualizar/{{ aluno._id }}"><i class="fa fa-clipboard fa-lg"></i></a></div>
+                    <div class="col"><a class="alila" routerLink="#" (click)="detalhes(aluno._id)" data-toggle="modal" data-target="#exampleModal">
+                        <i class="ti-trash"></i>
+                      </a></div>
+                    
+                  </div>
+                 
+
+              
+                  <br>
+
+           
+            </div> 
+            </tbody>
+          </table>
+        </div>
+    </app-card>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deletar do (a) aluno (a)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja deletar o (a) aluno (a) {{ aluno.nome }}?
+          </div>
+          <div class="row margemdireita">
+              <div class="col-md-12">
+            <button type="button" class="btn btn-primary corred" data-dismiss="modal">Cancelar</button>
+            <button type="button" (click)="deletar(aluno._id)" data-dismiss="modal" class="btn btn-primary">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

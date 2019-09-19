@@ -1,0 +1,25 @@
+.line-container {
+  height: 300px;
+  width: 100%;
+  display: block;
+}
+.gauge-container {
+  height: 300px;
+  width: 100%;
+  display: block;
+}
+
+.tamanho{
+  width: 250px;
+  height: 200px;
+  text-align: center;
+  margin-block-end: 40px;
+  margin-top: 40px;
+  font-size: 150px;
+  color: #902923;
+}
+
+.imagem{
+  text-align: center;
+
+}

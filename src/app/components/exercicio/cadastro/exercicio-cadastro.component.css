@@ -1,0 +1,15 @@
+.espacamento {
+  padding: 15px;
+}
+
+a {
+  color: #33a9bf;
+}
+
+a i {
+ font-size: 20px; 
+}
+
+#espacamentoBottom {
+  margin-bottom: 15px;
+}

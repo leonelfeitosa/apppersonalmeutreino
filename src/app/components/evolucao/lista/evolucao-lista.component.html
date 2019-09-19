@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Evolução do Aluno'" [classHeader]="true" [blockClass]="'table-border-style'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemSucesso}}</strong>
+      </div>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div class="table-responsive">
+           
+            <div *ngFor="let e of evolucaos">
+                <div class="row">
+                    <div class="col">
+                        <p class="maiusculo data">Data: {{ e.dataAvaliacao }}</p>
+                        <p class="maiusculo">Peso: {{ e.peso }} Kg</p>
+                        <p class="maiusculo">Torax: {{ e.torax }} CM</p>
+                        <p class="maiusculo">Cintura: {{ e.cintura }} CM</p>
+                        <p class="maiusculo">Abdomem: {{ e.abdomem }} CM</p>
+                        <p class="maiusculo">Quadril: {{ e.quadril }} CM</p>
+                        <p class="maiusculo">Coxa D: {{ e.coxaD }} CM - Coxa E: {{ e.coxaE }} CM</p>
+                        <p class="maiusculo">Perna D: {{ e.pernaD }} CM - Perna E: {{ e.pernaE }} CM</p>
+                        <p class="maiusculo">Braço D: {{ e.bracoD }} CM - Braço E: {{ e.bracoE }} CM</p>
+                        <p class="maiusculo">Antebraço D: {{ e.antebracoD }} CM - Antebraço E: {{ e.antebracoE }} CM</p>
+                        
+                    </div>
+                    <div class="row">
+                      <div class="col">
+
+                          <a class="botao" routerLink="/evolucao/atualizar/{{ e._id }}/{{ e.aluno_id }}"><i class="fa fa-pencil fa-lg cor"></i></a>
+  
+                      </div>
+                      <div class="col">
+                          <a class="botao" routerLink="#" (click)="detalhes(e._id)" data-toggle="modal" data-target="#exampleModal"><i class="cor ti-trash"></i></a>
+
+                      </div>
+                    </div>
+                    
+                  </div>
+              
+                  <br>
+             
+            </div>
+        </div>
+    </app-card>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deletar Evolução</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja deletar?
+          </div>
+          <div class="row margemdireita espaco">
+              <div class="col-md-12">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" (click)="deletar(evolucao._id)" data-dismiss="modal" class="btn btn-danger">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

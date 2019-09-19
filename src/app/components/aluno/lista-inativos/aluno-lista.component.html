@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Alunos'" [classHeader]="true" [blockClass]="'table-border-style'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemSucesso}}</strong>
+      </div>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div class="col-md-6">                                
+          <input [(ngModel)]="pesquisa" name="pesquisa" class="form-control" placeholder="Pesquisar por Nome">
+       </div>
+        
+            <div *ngFor="let aluno of alunos|searchp:'nome':pesquisa">
+
+                <div class="row">
+                    <div class="col-12 alinha">
+                        <p class="maiusculo">{{ aluno.nome }}</p>                      
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="maiusculo">{{ mascaraCPF(aluno.cpf) }}</p>
+                      </div>
+                    <div class="col espacodiv">
+                        <a class="" routerLink="#" (click)="detalhes(aluno._id)" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fa fa-refresh fa-lg"></i></a>
+                    </div>                   
+                  </div>
+                  <br>
+        </div>
+    </app-card>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ativar aluno (a)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja reativar o (a) aluno (a) {{ aluno.nome }}?
+          </div>
+          <div class="row margemdireita">
+              <div class="col-md-12">
+            <button type="button" class="btn btn-primary corred" data-dismiss="modal">Cancelar</button>
+            <button type="button" (click)="ativar(aluno._id)" data-dismiss="modal" class="btn btn-primary">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

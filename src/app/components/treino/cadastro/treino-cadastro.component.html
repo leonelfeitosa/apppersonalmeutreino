@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-sm-12">
+    <!-- Basic Form Inputs card start -->
+    <app-card [title]="'Cadastro de Treino'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <br>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div *ngIf="mensagem" class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagem}}</strong>
+      </div>
+      <div class="espacamento">
+        <form #form="ngForm" class="form-horizontal">
+
+          <div *ngIf="!treino.treino_id || id_desc != null" class="form-group row">
+            <div class="col-md-1">
+              <label> <strong>Descrição</strong></label>
+            </div>
+            <div id="espacamentoBottom" class="col-md-12">
+              <quill-editor required name="descricao" [(ngModel)]="treino.descricao" [options]="editorOptions"
+                (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)"
+                (change)="onContentChanged($event)">teste</quill-editor>
+            </div>
+          </div>
+          <div *ngIf="treino.treino_id">
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label class="negrito"><strong>Título do Treino</strong></label>
+                <input required type="text" name="nome" [(ngModel)]="treino.nome" class="form-control"
+                  placeholder="Título do Treino">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label> <strong>Observações</strong></label>
+              </div>
+              <div id="espacamentoBottom" class="col-md-12">
+                <input class="form-control" required name="treino" [(ngModel)]="treino.treino">
+              </div>
+            </div>
+
+       
+            <div *ngIf="mensagemAdd" class="alert alert-success" role="alert">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>{{ mensagemAdd }}</strong>
+            </div>
+            <div *ngIf="mensagemExercicioJaExiste" class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>{{ mensagemExercicioJaExiste }}</strong>
+              </div>
+            <div *ngIf="editando">
+                
+                
+                    <div *ngFor="let e of exerciciosTreino">
+                      <div class="row">
+                          <div class="col coluna">
+                            <p class="">{{ e.nomeExercicio }}</p>
+                            <p class="">{{ e.intensidade }}</p>   
+                          </div>
+                        <div class="col iconecoluna">
+                            <a routerLink="#" (click)="deletarExercicioTreino(e._id, e.item_treino_id)"><i class="cor ti-trash"></i> </a>
+                          </div>
+                      </div>
+
+                    <br>
+                    
+                  </div>
+
+
+              
+
+            </div>
+            <div class="row form-group msg">
+              <div class="col-md-4">
+                <label class="negrito"><strong>Adicionar Exercício</strong></label>
+                <select class="form-control" name="exercicio_id" [(ngModel)]="exercicio_id">
+                  <option [ngValue]="undefined" disabled selected> Por favor,
+                    selecione um Exercício </option>
+                  <option *ngFor="let exercicio of exercicios" [ngValue]="exercicio._id">
+                    {{exercicio.nomeExercicio}} - {{ exercicio.responsavelCadastro }}</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="negrito"><strong>Intensidade/Repetições</strong></label>
+                <input type="text" name="intensidade" [(ngModel)]="intensidade" class="form-control"
+                  placeholder="Intensidade/Repetições">
+              </div>
+              <div class="col-md-2 msg">
+                <button (click)="addExercicios()" class="btn btn-success pull-right"><i class="fa fa-plus"></i>
+                  Add</button>
+              </div>
+            </div>
+            <div *ngIf="teste" class="row form-group msg">
+              <div class="col-md-8">
+                <div *ngFor="let item of exerciciosLista; let i = index">
+                  <tr>
+                    <td>{{ retornaExercicio(item.exercicio_id) }} - {{ item.intensidade }}</td>
+                    <td> <a (click)="removeExercicio(i)"> <i class="fa fa-trash-o fa-lg"></i></a></td>
+                  </tr>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <button type="submit" *ngIf="!treino.treino_id && !id_desc && !id_treino" [disabled]="form.form.invalid"
+            (click)="cadastrar()" class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Salvar</button>
+          <button type="submit" *ngIf="treino.treino_id && !id_treino" [disabled]="form.form.invalid"
+            (click)="cadastrarItem()" class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Salvar</button>
+          <button type="submit" *ngIf="editando && id_treino" [disabled]="form.form.invalid" (click)="editarTreino()"
+            class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Atualizar</button>
+          <button type="submit" *ngIf="editando && id_desc" [disabled]="form.form.invalid" (click)="editar()"
+            class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Atualizar</button>
+
+        </form>
+      </div>
+
+    </app-card>
+    <!-- Input Alignment card end -->
+  </div>
+</div>

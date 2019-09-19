@@ -1,0 +1,36 @@
+.espacamento {
+  padding: 15px;
+}
+
+a {
+  color: #33a9bf;
+}
+
+a i {
+ font-size: 20px; 
+}
+
+#espacamentoBottom {
+  margin-bottom: 15px;
+}
+
+.msg {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+td a {
+  color: red;
+}
+
+td a:hover {
+  cursor: pointer;
+}
+
+.coluna{
+  font-weight: 600;
+}
+
+.iconecoluna{
+  text-align: right;
+}

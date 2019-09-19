@@ -1,0 +1,20 @@
+a {
+    color: #33a9bf;
+}
+
+a i {
+   font-size: 20px; 
+}
+
+.maiusculo{
+    text-transform: uppercase;
+    margin-left: 15px;
+}
+
+.botao{
+    margin-left: -60px;
+}
+
+.data{
+    font-size: 18px !important;
+}

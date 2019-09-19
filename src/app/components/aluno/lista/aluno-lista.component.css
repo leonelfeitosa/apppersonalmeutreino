@@ -1,0 +1,46 @@
+
+a i {
+   font-size: 20px; 
+}
+
+.maiusculo{
+    text-transform: uppercase;
+    margin-left: 15px !important;
+    font-weight: 600 !important;
+}
+
+.nomealuno{
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-weight: 600;
+
+}
+
+
+.iconeslista{
+    font-size: 28px !important;
+    margin-block-end: 5px;
+    margin-left: 5px;
+    size: 20px !important;
+    margin-top: -35px;
+    text-align: justify;
+    margin-right: 30px;
+}
+
+.centralizarrow{
+    margin-top: 5px;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.espacodiv{
+    margin-left: 15px !important;
+    text-align: right !important;
+}
+
+.treino[_ngcontent-c2] i[_ngcontent-c2] {
+    size: 50px;
+    font-weight: bold;
+    margin-right: 0 !important;
+}

@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Alunos'" [classHeader]="true" [blockClass]="'table-border-style'">
+      <a routerLink="{{voltarUrl}}"><i class="fa fa-arrow-left espacamento1" aria-hidden="true"></i></a>
+      <div *ngIf="mensagemSucesso" class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemSucesso}}</strong>
+      </div>
+      <div *ngIf="mensagemErro" class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{mensagemErro}}</strong>
+      </div>
+      <div class="col-md-6">                                
+          <input [(ngModel)]="pesquisa" name="pesquisa" class="form-control" placeholder="Pesquisar por Nome">
+       </div>
+      <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+              <th>Data de Cadastro</th>
+              <th class="text-center">Editar</th>
+              <th class="text-center">Deletar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let educador of educadores|searchAdmin:'nome':pesquisa">
+              <td class="maiusculo">{{ educador.nome }}</td>
+              <td class="maiusculo">{{ mascaraCPF(educador.cpf) }}</td>
+              <td class="maiusculo">{{ educador.telefone }}</td>
+              <td class="maiusculo">{{ educador.data_cadastro | date: 'dd/MM/yyyy' }}</td>
+              <td class="text-center"><a routerLink="/admin/atualiza/{{ educador._id }}"><i class="fa fa-clipboard fa-lg"></i></a></td>
+              <td class="text-center"><a routerLink="#" (click)="detalhes(educador._id)" data-toggle="modal" data-target="#exampleModal">
+                <i class="ti-trash"></i>
+              </a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+    </app-card>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deletar profissional</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja deletar o (a) profissional {{ educador.nome }}?
+          </div>
+          <div class="row margemdireita">
+              <div class="col-md-12">
+            <button type="button" class="btn btn-primary corred" data-dismiss="modal">Cancelar</button>
+            <button type="button" (click)="deletar(educador._id)" data-dismiss="modal" class="btn btn-primary">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
