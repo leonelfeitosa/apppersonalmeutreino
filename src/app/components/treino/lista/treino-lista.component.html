@@ -16,9 +16,16 @@
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>{{mensagem}}</strong>
         </div>
-        <a routerLink="/treino/cadastro/{{ aluno_id }}"><i class="fa fa-calendar-plus-o fa-lg"></i>Cadastrar Treino</a>
+
+        <div class="row botancadastrar">
+          <div class="col botancadastrar">
+        <a class="botancadastrar" routerLink="/treino/cadastro/{{ aluno_id }}"><i class="fa fa-calendar-plus-o fa-lg"></i> Cadastrar Treino</a>
+          
+          </div>
+        </div>
       </div>
       <div>
+          <br>
         <div *ngIf="verifica" class="col-sm-12 treino">
 
           <br>
